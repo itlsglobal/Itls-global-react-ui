@@ -1,0 +1,25 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './App.css'
+import LandingPage from './Components/LandingPage'
+import Login from './Components/Login';
+import Registration from './Components/Registration';
+import TopicSelection from './Components/TopicSelection';
+import QuizPage from './Components/QuizPage';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Registration />} />
+        <Route path="/topics" element={<TopicSelection />} />
+        <Route path="/quiz" element={<QuizPage />} />
+      </Routes>
+    </Router>
+  )
+}
+
+export default App

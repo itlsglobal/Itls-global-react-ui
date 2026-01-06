@@ -1,0 +1,57 @@
+import React from "react";
+import { Link } from 'react-router-dom';
+import Slider from "react-slick";
+// carousel styles
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import GradeSelection from "./GradeSelection";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+import img from "../assets/generated-image5.png";
+
+export default function LandingPage() {
+  return (
+    <div className="landing-page w-full min-h-screen bg-white overflow-x-hidden">
+      <div
+        className="w-full min-h-screen bg-white overflow-x-hidden"
+        style={{ margin: 0, textAlign: "left" }}
+      >
+        {/* Navbar */}
+        <Navbar />
+
+        {/* Hero Section */}
+        <section
+          id="home"
+          className="w-screen h-[60vh] relative overflow-hidden"
+        >
+          <img
+            src={img}
+            alt="Hero Banner"
+            className="w-full h-full object-cover"
+          />
+
+          {/* Optional dark overlay */}
+          <div className="absolute inset-0 bg-black/60"></div>
+
+          {/* Optional centered content */}
+          <div className="absolute inset-0 flex items-center justify-center text-center px-6">
+            <div>
+              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+                Learn Smarter with ITLS GLOBAL
+              </h1>
+              <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
+                Structured learning paths from Grade 1 to Advanced Levels
+              </p>
+              {/* <button className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-4 rounded-full font-semibold hover:scale-105 transition-transform">
+                Get Started
+              </button> */}
+            </div>
+          </div>
+        </section>
+        <GradeSelection />
+
+        {/* Footer */}
+        <Footer />
+      </div>
+    </div>);
+}
