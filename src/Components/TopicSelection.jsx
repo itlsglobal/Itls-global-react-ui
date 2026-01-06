@@ -115,8 +115,12 @@ export default function TopicSelection() {
         }));
     };
 
-    const handleTopicClick = () => {
-        navigate('/quiz');
+    const handleTopicClick = (topicTitle, subtopic) => {
+        // build quiz id same as quizzes.json ids
+        const makeId = (grade, topic, sub) =>
+            `${grade.toLowerCase().replace(/\s+/g, '').replace(/[^a-z0-9\-]/g,'')}-${topic.toLowerCase().replace(/\s+/g,'-')}-${sub.toLowerCase().replace(/\s+/g,'-')}`;
+        const quizId = makeId(selectedGrade, topicTitle, subtopic);
+        navigate('/quiz', { state: { quizId } });
     };
 
     const currentTopics = topicsData[selectedGrade]?.[selectedSubject] || [];
@@ -243,7 +247,7 @@ export default function TopicSelection() {
                                                             }`}
                                                     >
                                                         <div
-                                                            onClick={handleTopicClick}
+                                                            onClick={() => handleTopicClick(topic.title, subtopic)}
                                                             className={`font-medium cursor-pointer flex-1 ${isChecked ? "text-[#053361] font-bold" : "text-gray-800"
                                                                 }`}
                                                         >

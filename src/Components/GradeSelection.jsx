@@ -11,6 +11,7 @@ import {
   Clock,
   Award
 } from 'lucide-react';
+// using anchor for navigation to avoid JSX parser ambiguity in this component
 
 const GradeSelection = () => {
   const [selectedGrade, setSelectedGrade] = useState(null);
@@ -119,37 +120,29 @@ const GradeSelection = () => {
             const IconComponent = grade.icon;
             const isSelected = selectedGrade === grade.id;
             const isHovered = hoveredGrade === grade.id;
-            
+
             return (
               <div
                 key={grade.id}
-                className={`group relative cursor-pointer transition-all duration-300 transform hover:-translate-y-2 ${
-                  isSelected ? 'scale-105' : ''
-                }`}
+                className={`group relative cursor-pointer transition-all duration-300 transform hover:-translate-y-2 ${isSelected ? 'scale-105' : ''}`}
                 onClick={() => handleGradeClick(grade.id)}
                 onMouseEnter={() => setHoveredGrade(grade.id)}
                 onMouseLeave={() => setHoveredGrade(null)}
               >
-                {/* Main Card */}
-                <div className={`relative bg-slate-800/60 backdrop-blur-sm rounded-2xl p-6 border-2 transition-all duration-300 ${
-                  grade.borderColor
-                } ${isSelected ? 'border-opacity-100 shadow-2xl' : 'border-opacity-50'} ${grade.bgColor}`}>
-                  
-                  {/* Grade Icon */}
-                  <div className={`w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-r ${grade.color} flex items-center justify-center transform transition-transform duration-300 ${
-                    isHovered ? 'scale-110 rotate-3' : ''
-                  }`}>
+                <a
+                  href="/topics"
+                  className={`relative block bg-slate-800/60 backdrop-blur-sm rounded-2xl p-6 border-2 transition-all duration-300 ${grade.borderColor} ${isSelected ? 'border-opacity-100 shadow-2xl' : 'border-opacity-50'} ${grade.bgColor}`}
+                >
+                  <div className={`w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-r ${grade.color} flex items-center justify-center transform transition-transform duration-300 ${isHovered ? 'scale-110 rotate-3' : ''}`}>
                     <IconComponent className="w-8 h-8 text-white" />
                   </div>
 
-                  {/* Grade Info */}
                   <div className="text-center mb-4">
                     <h3 className="text-2xl font-bold text-white mb-1">{grade.title}</h3>
                     <p className="text-sm text-gray-400 mb-3">{grade.subtitle}</p>
                     <p className="text-gray-300 text-sm leading-relaxed">{grade.description}</p>
                   </div>
 
-                  {/* Quick Stats */}
                   <div className="flex justify-center space-x-6 mb-4">
                     <div className="flex items-center">
                       <Users className="w-4 h-4 text-blue-400 mr-1" />
@@ -159,18 +152,10 @@ const GradeSelection = () => {
                       <Clock className="w-4 h-4 text-green-400 mr-1" />
                       <span className="text-xs text-gray-400">Self-Paced</span>
                     </div>
-                    {/* <div className="flex items-center">
-                      <Award className="w-4 h-4 text-yellow-400 mr-1" />
-                      <span className="text-xs text-gray-400">Certified</span>
-                    </div> */}
                   </div>
 
-                  {/* Expansion Content */}
-                  <div className={`overflow-hidden transition-all duration-500 ${
-                    isSelected ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                  }`}>
+                  <div className={`overflow-hidden transition-all duration-500 ${isSelected ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
                     <div className="pt-4 border-t border-gray-600">
-                      {/* Subjects */}
                       <div className="mb-4">
                         <h4 className="text-white font-semibold mb-2 flex items-center">
                           <BookOpen className="w-4 h-4 mr-2" />
@@ -178,17 +163,11 @@ const GradeSelection = () => {
                         </h4>
                         <div className="flex flex-wrap gap-2">
                           {grade.subjects.map((subject, index) => (
-                            <span
-                              key={index}
-                              className="px-3 py-1 bg-slate-700/50 text-gray-300 text-xs rounded-full border border-slate-600"
-                            >
-                              {subject}
-                            </span>
+                            <span key={index} className="px-3 py-1 bg-slate-700/50 text-gray-300 text-xs rounded-full border border-slate-600">{subject}</span>
                           ))}
                         </div>
                       </div>
 
-                      {/* Features */}
                       <div className="mb-4">
                         <h4 className="text-white font-semibold mb-2 flex items-center">
                           <Star className="w-4 h-4 mr-2" />
@@ -204,22 +183,16 @@ const GradeSelection = () => {
                         </ul>
                       </div>
 
-                      {/* Action Button */}
-                      <button className={`w-full py-2 px-4 rounded-lg bg-gradient-to-r ${grade.color} text-white font-semibold text-sm hover:opacity-90 transition-opacity duration-200 transform hover:scale-105`}>
-                        Start Learning Now
-                      </button>
+                      <button onClick={(e) => e.preventDefault()} className={`w-full py-2 px-4 rounded-lg bg-gradient-to-r ${grade.color} text-white font-semibold text-sm hover:opacity-90 transition-opacity duration-200 transform hover:scale-105`}>Start Learning Now</button>
                     </div>
                   </div>
 
-                  {/* Click Indicator */}
-                  <div className={`absolute bottom-2 right-2 transition-all duration-300 ${
-                    isSelected ? 'opacity-100 scale-100' : 'opacity-60 scale-75'
-                  }`}>
+                  <div className={`absolute bottom-2 right-2 transition-all duration-300 ${isSelected ? 'opacity-100 scale-100' : 'opacity-60 scale-75'}`}>
                     <div className={`w-6 h-6 rounded-full bg-gradient-to-r ${grade.color} flex items-center justify-center`}>
                       <Star className="w-3 h-3 text-white" />
                     </div>
                   </div>
-                </div>
+                </a>
               </div>
             );
           })}
