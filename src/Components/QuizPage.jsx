@@ -1,56 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Home, Lightbulb, CheckCircle, XCircle, HelpCircle } from 'lucide-react';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import QuizResult from './QuizResult';
-
-// Mock Data to simulate your JSON file
-const MOCK_QUESTIONS = [
-    {
-        id: 1,
-        text: "How many fingers do you have on one hand?",
-        question_type: 1, // MCQ
-        answers: [
-            { id: 'a', text: "3", is_correct: false },
-            { id: 'b', text: "5", is_correct: true },
-            { id: 'c', text: "7", is_correct: false },
-            { id: 'd', text: "10", is_correct: false }
-        ]
-    },
-    {
-        id: 2,
-        text: "Is the sun hot?",
-        question_type: 2, // Yes/No
-        answers: [
-            { id: 'yes', text: "Yes", is_correct: true },
-            { id: 'no', text: "No", is_correct: false }
-        ]
-    },
-    {
-        id: 3,
-        text: "Select the primary colors (Check all that apply):",
-        question_type: 5, // Checkbox
-        answers: [
-            { id: 'red', text: "Red", is_correct: true },
-            { id: 'green', text: "Green", is_correct: false },
-            { id: 'blue', text: "Blue", is_correct: true }
-        ]
-    },
-    {
-        id: 4,
-        text: "What is 2 + 2?",
-        question_type: 4, // Text Input
-        answers: [
-            { text: "4", is_correct: true }
-        ]
-    }
-];
+import quizzesData from '../data/quizzes.json';
 
 export default function QuizPage() {
     const navigate = useNavigate();
 
     // State
+    const [quizSets, setQuizSets] = useState([]);
+    const [selectedQuizId, setSelectedQuizId] = useState(null);
     const [questions, setQuestions] = useState([]);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState(null); // Single value or array for checkboxes
@@ -63,10 +24,37 @@ export default function QuizPage() {
     // Feedback State
     const [feedback, setFeedback] = useState({ show: false, isCorrect: false, message: "" });
 
+    const location = useLocation();
+
     useEffect(() => {
-        // Simulate fetching data
-        setQuestions(MOCK_QUESTIONS);
-    }, []);
+        const sets = quizzesData.quizSets || [];
+        setQuizSets(sets);
+
+        // If navigation passed a quizId, prefer that
+        const passedQuizId = location?.state?.quizId;
+        if (passedQuizId) {
+            setSelectedQuizId(passedQuizId);
+            const sel = sets.find(q => q.id === passedQuizId);
+            if (sel) setQuestions(sel.questions || []);
+        } else if (sets.length > 0) {
+            setSelectedQuizId(sets[0].id);
+            setQuestions(sets[0].questions || []);
+        }
+    }, [location]);
+
+    // When selectedQuizId changes via selector, load corresponding questions and reset state
+    useEffect(() => {
+        if (!selectedQuizId) return;
+        const sel = quizSets.find(q => q.id === selectedQuizId);
+        if (sel) {
+            setQuestions(sel.questions || []);
+            setCurrentQuestionIndex(0);
+            setScore(0);
+            setSelectedAnswer(null);
+            setIsQuizFinished(false);
+            setFeedback({ show: false, isCorrect: false, message: "" });
+        }
+    }, [selectedQuizId, quizSets]);
 
     const currentQuestion = questions[currentQuestionIndex];
 
@@ -156,6 +144,10 @@ export default function QuizPage() {
         setScore(0);
         setSelectedAnswer(null);
         setFeedback({ show: false, isCorrect: false, message: "" });
+    };
+
+    const handleSelectQuiz = (id) => {
+        setSelectedQuizId(id);
     };
 
     // Render different input types
@@ -267,10 +259,19 @@ export default function QuizPage() {
                     </div>
 
                     {/* Yellow Sub-header - Category */}
-                    <div className="bg-[#FFD000] px-6 py-2">
+                    <div className="bg-[#FFD000] px-6 py-2 flex items-center justify-between">
                         <h5 className="text-[#053361] font-bold text-sm uppercase tracking-wide">
-                            Grade – 1 Math – Addition & Subtraction
+                            {quizSets.find(q => q.id === selectedQuizId)?.title || 'Select Quiz'}
                         </h5>
+                        <select
+                            value={selectedQuizId || ''}
+                            onChange={(e) => handleSelectQuiz(e.target.value)}
+                            className="bg-white text-sm px-3 py-1 rounded-md"
+                        >
+                            {quizSets.map((set) => (
+                                <option key={set.id} value={set.id}>{set.title}</option>
+                            ))}
+                        </select>
                     </div>
 
                     {/* Main Content Area */}

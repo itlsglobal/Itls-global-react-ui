@@ -1,0 +1,64 @@
+{
+  "quizSets": [
+    {
+      "id": "kindergarten-counting-counting-to-10",
+      "title": "Kindergarten - Counting - Counting to 10",
+      "grade": "Kindergarten",
+      "subject": "Mathematics",
+      "questions": [
+        { "id": 1, "text": "Count aloud to 5.", "question_type": 4, "answers": [{ "text": "5", "is_correct": true }] },
+        { "id": 2, "text": "How many apples are there? (Image shows 3 apples)", "question_type": 1, "answers": [{ "id": "a", "text": "2", "is_correct": false }, { "id": "b", "text": "3", "is_correct": true }, { "id": "c", "text": "4", "is_correct": false }] }
+      ]
+    },
+    {
+      "id": "kindergarten-counting-counting-to-20",
+      "title": "Kindergarten - Counting - Counting to 20",
+      "grade": "Kindergarten",
+      "subject": "Mathematics",
+      "questions": [
+        { "id": 1, "text": "What comes after 9?", "question_type": 1, "answers": [{ "id": "a", "text": "8", "is_correct": false }, { "id": "b", "text": "10", "is_correct": true }, { "id": "c", "text": "11", "is_correct": false }] },
+        { "id": 2, "text": "Count from 15 to 17.", "question_type": 4, "answers": [{ "text": "15,16,17", "is_correct": true }] }
+      ]
+    },
+    {
+      "id": "kindergarten-shapes-circle",
+      "title": "Kindergarten - Shapes - Circle",
+      "grade": "Kindergarten",
+      "subject": "Mathematics",
+      "questions": [
+        { "id": 1, "text": "Which of these is a circle?", "question_type": 1, "answers": [{ "id": "a", "text": "A", "is_correct": true }, { "id": "b", "text": "B", "is_correct": false }] },
+        { "id": 2, "text": "A circle has how many corners?", "question_type": 1, "answers": [{ "id": "a", "text": "0", "is_correct": true }, { "id": "b", "text": "1", "is_correct": false }] }
+      ]
+    },
+    {
+      "id": "grade1-addition-single-digit-addition",
+      "title": "Grade 1 - Addition - Single Digit Addition",
+      "grade": "Grade 1",
+      "subject": "Mathematics",
+      "questions": [
+        { "id": 1, "text": "What is 2 + 3?", "question_type": 1, "answers": [{ "id": "a", "text": "4", "is_correct": false }, { "id": "b", "text": "5", "is_correct": true }, { "id": "c", "text": "6", "is_correct": false }] },
+        { "id": 2, "text": "Add: 1 + 4 = ?", "question_type": 1, "answers": [{ "id": "a", "text": "5", "is_correct": true }, { "id": "b", "text": "6", "is_correct": false }] }
+      ]
+    },
+    {
+      "id": "grade1-addition-double-digit-addition",
+      "title": "Grade 1 - Addition - Double Digit Addition",
+      "grade": "Grade 1",
+      "subject": "Mathematics",
+      "questions": [
+        { "id": 1, "text": "What is 12 + 5?", "question_type": 1, "answers": [{ "id": "a", "text": "17", "is_correct": true }, { "id": "b", "text": "16", "is_correct": false }] },
+        { "id": 2, "text": "Calculate: 20 + 3 = ?", "question_type": 1, "answers": [{ "id": "a", "text": "23", "is_correct": true }, { "id": "b", "text": "22", "is_correct": false }] }
+      ]
+    },
+    {
+      "id": "grade1-subtraction-single-digit-subtraction",
+      "title": "Grade 1 - Subtraction - Single Digit Subtraction",
+      "grade": "Grade 1",
+      "subject": "Mathematics",
+      "questions": [
+        { "id": 1, "text": "What is 5 - 2?", "question_type": 1, "answers": [{ "id": "a", "text": "3", "is_correct": true }, { "id": "b", "text": "2", "is_correct": false }] },
+        { "id": 2, "text": "Calculate: 7 - 4 = ?", "question_type": 1, "answers": [{ "id": "a", "text": "3", "is_correct": true }, { "id": "b", "text": "4", "is_correct": false }] }
+      ]
+    }
+  ]
+}
