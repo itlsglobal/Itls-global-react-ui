@@ -165,7 +165,7 @@ export default function QuizPage() {
                                 key={answer.id}
                                 onClick={() => handleOptionSelect(answer.id, question_type)}
                                 className={`p-4 rounded-xl text-lg font-bold transition-all transform hover:scale-105 shadow-md border-2
-                  ${selectedAnswer === answer.id
+                                    ${selectedAnswer === answer.id
                                         ? 'bg-[#FFD000] text-[#053361] border-[#FFD000]'
                                         : 'bg-[#053361] text-white border-transparent hover:opacity-90'
                                     }`}

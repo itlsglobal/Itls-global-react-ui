@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import img from "../assets/LOGOITLS.png";
+import logoVideo from "../assets/itlsgif1.mp4";
+// import img from "../assets/LOGOITLS.png";
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -10,14 +11,27 @@ export default function Navbar() {
             <div className="px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center py-2">
                     {/* Logo */}
-                    <Link to="/" className="flex items-center space-x-2">
+                    {/* <Link to="/" className="flex items-center space-x-2">
                         <img
                             src={img}
                             alt="ITLS GLOBAL Logo"
                             className="h-16 w-auto"
                         />
+                    </Link> */}
+                    {/* scp -r dist/* root@72.60.220.244:/var/www/reactapp/dist/ */}
+                    <Link to="/" className="flex items-center">
+                        <video
+                            src={logoVideo}
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            disablePictureInPicture
+                            controls={false}
+                            preload="auto"
+                            className="h-16 w-auto object-contain pointer-events-none"
+                        />
                     </Link>
-
                     {/* Desktop Navigation */}
                     <div className="hidden md:flex items-center space-x-8 mr-[50px]">
                         <Link
@@ -53,7 +67,7 @@ export default function Navbar() {
                                 className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden z-50
                                             opacity-0 invisible group-hover:opacity-100 group-hover:visible
                                             transition-all duration-200"
-                                                        >
+                            >
                                 <div className="py-2">
                                     <Link
                                         to="/topics"
@@ -95,18 +109,18 @@ export default function Navbar() {
                             </div>
                         </div>
 
-                        <a
-                            href="#about"
+                        <Link
+                            to="/about"
                             className="text-gray-700 hover:text-purple-600 transition-colors duration-200"
                         >
                             About
-                        </a>
-                        <a
-                            href="#contact"
+                        </Link>
+                        <Link
+                            to="/contact"
                             className="text-gray-700 hover:text-purple-600 transition-colors duration-200"
                         >
                             Contact
-                        </a>
+                        </Link>
                     </div>
 
                     {/* Mobile menu button */}
@@ -136,19 +150,21 @@ export default function Navbar() {
                             >
                                 Grades
                             </Link>
-                            <a
-                                href="#about"
+                            <Link
+                                to="/about"
                                 className="text-gray-700 hover:text-purple-600 transition-colors"
+                                onClick={() => setIsMenuOpen(false)}
                             >
                                 About
-                            </a>
-                            <a
-                                href="#contact"
+                            </Link>
+                            <Link
+                                to="/contact"
                                 className="text-gray-700 hover:text-purple-600 transition-colors"
+                                onClick={() => setIsMenuOpen(false)}
                             >
                                 Contact
-                            </a>
-                            <Link
+                            </Link>
+                            {/* <Link
                                 to="/login"
                                 className="border border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-white px-6 py-2 rounded-full transition-all duration-200 w-full text-center"
                             >
@@ -159,7 +175,7 @@ export default function Navbar() {
                                 className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-2 rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-200 w-full text-center"
                             >
                                 Register
-                            </Link>
+                            </Link> */}
                         </div>
                     </div>
                 )}
