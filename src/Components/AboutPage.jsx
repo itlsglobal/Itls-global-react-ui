@@ -73,28 +73,28 @@ const AboutPage = () => {
         }
     ];
 
-    const team = [
-        {
-            name: "Dr. Sarah Johnson",
-            role: "Founder & CEO",
-            description: "20+ years in education technology"
-        },
-        {
-            name: "Michael Chen",
-            role: "Head of Curriculum",
-            description: "Former elementary school principal"
-        },
-        {
-            name: "Priya Sharma",
-            role: "Chief Technology Officer",
-            description: "EdTech innovation specialist"
-        },
-        {
-            name: "David Williams",
-            role: "Head of Student Success",
-            description: "Child psychology expert"
-        }
-    ];
+    // const team = [
+    //     {
+    //         name: "Dr. Sarah Johnson",
+    //         role: "Founder & CEO",
+    //         description: "20+ years in education technology"
+    //     },
+    //     {
+    //         name: "Michael Chen",
+    //         role: "Head of Curriculum",
+    //         description: "Former elementary school principal"
+    //     },
+    //     {
+    //         name: "Priya Sharma",
+    //         role: "Chief Technology Officer",
+    //         description: "EdTech innovation specialist"
+    //     },
+    //     {
+    //         name: "David Williams",
+    //         role: "Head of Student Success",
+    //         description: "Child psychology expert"
+    //     }
+    // ];
 
     return (
         <div className="min-h-screen flex flex-col bg-white">
@@ -243,7 +243,7 @@ const AboutPage = () => {
             </section>
 
             {/* Team Section */}
-            <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+            {/* <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-16">
                         <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 rounded-full mb-6">
@@ -276,7 +276,7 @@ const AboutPage = () => {
                         ))}
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             {/* Why Choose Us */}
             <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#053361] to-[#0a4a8a]">
