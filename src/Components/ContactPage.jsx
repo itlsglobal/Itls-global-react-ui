@@ -52,29 +52,29 @@ const ContactPage = () => {
         setIsSubmitting(false);
     };
 
-    const contactInfo = [
-        {
-            icon: Mail,
-            title: "Email Us",
-            details: "support@itlsglobal.com",
-            subtitle: "We'll respond within 24 hours",
-            color: "from-blue-500 to-cyan-500"
-        },
-        {
-            icon: Phone,
-            title: "Call Us",
-            details: "+1 (555) 123-4567",
-            subtitle: "Mon-Fri, 9AM-6PM EST",
-            color: "from-green-500 to-emerald-500"
-        },
-        {
-            icon: MapPin,
-            title: "Visit Us",
-            details: "123 Education Lane",
-            subtitle: "New York, NY 10001",
-            color: "from-purple-500 to-pink-500"
-        }
-    ];
+    // const contactInfo = [
+    //     {
+    //         icon: Mail,
+    //         title: "Email Us",
+    //         details: "support@itlsglobal.com",
+    //         subtitle: "We'll respond within 24 hours",
+    //         color: "from-blue-500 to-cyan-500"
+    //     },
+    //     {
+    //         icon: Phone,
+    //         title: "Call Us",
+    //         details: "+1 (555) 123-4567",
+    //         subtitle: "Mon-Fri, 9AM-6PM EST",
+    //         color: "from-green-500 to-emerald-500"
+    //     },
+    //     {
+    //         icon: MapPin,
+    //         title: "Visit Us",
+    //         details: "123 Education Lane",
+    //         subtitle: "New York, NY 10001",
+    //         color: "from-purple-500 to-pink-500"
+    //     }
+    // ];
 
     const inquiryTypes = [
         { value: "general", label: "General Inquiry" },
@@ -182,7 +182,7 @@ const ContactPage = () => {
             </section>
 
             {/* Contact Cards */}
-            <section className="py-12 px-4 sm:px-6 lg:px-8 bg-gray-50 -mt-10 relative z-10">
+            {/* <section className="py-12 px-4 sm:px-6 lg:px-8 bg-gray-50 -mt-10 relative z-10">
                 <div className="max-w-5xl mx-auto">
                     <div className="grid md:grid-cols-3 gap-6">
                         {contactInfo.map((contact, index) => {
@@ -203,7 +203,7 @@ const ContactPage = () => {
                         })}
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             {/* Contact Form & Info */}
             <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
