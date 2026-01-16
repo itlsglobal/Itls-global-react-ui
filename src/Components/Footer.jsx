@@ -97,20 +97,20 @@ export default function Footer() {
                                 </Link>
                             </li>
                             <li>
-                                <a
-                                    href="#"
+                                <Link
+                                    to="/blog"
                                     className="text-gray-600 hover:text-purple-600 transition-colors"
                                 >
                                     Blog
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a
-                                    href="#"
+                                <Link
+                                    to="/careers"
                                     className="text-gray-600 hover:text-purple-600 transition-colors"
                                 >
                                     Careers
-                                </a>
+                                </Link>
                             </li>
                             <li>
                                 <Link

@@ -97,19 +97,18 @@ const GradeSelection = () => {
   };
 
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-slate-900/50 to-slate-800/50">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-white via-gray-50 to-blue-50">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-16">
           <div className="flex items-center justify-center mb-4">
-            <Star className="w-8 h-8 text-yellow-400 mr-2" />
-            <span className="text-yellow-400 font-semibold text-lg">Choose Your Grade</span>
+            <Star className="w-8 h-8 text-[#FFD000] mr-2" />
+            <span className="text-[#053361] font-semibold text-lg">Choose Your Grade</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#053361] mb-4">
             Learning Made Simple
-            {/* <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"> Simple</span> */}
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Select your grade level and discover a world of interactive learning designed specifically for your age group
           </p>
         </div>
@@ -131,52 +130,52 @@ const GradeSelection = () => {
               >
                 <a
                   href="/topics"
-                  className={`relative block bg-slate-800/60 backdrop-blur-sm rounded-2xl p-6 border-2 transition-all duration-300 ${grade.borderColor} ${isSelected ? 'border-opacity-100 shadow-2xl' : 'border-opacity-50'} ${grade.bgColor}`}
+                  className={`relative block bg-white rounded-2xl p-6 border-2 shadow-lg hover:shadow-2xl transition-all duration-300 ${grade.borderColor} ${isSelected ? 'border-[#053361] shadow-2xl' : 'border-gray-200'}`}
                 >
                   <div className={`w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-r ${grade.color} flex items-center justify-center transform transition-transform duration-300 ${isHovered ? 'scale-110 rotate-3' : ''}`}>
                     <IconComponent className="w-8 h-8 text-white" />
                   </div>
 
                   <div className="text-center mb-4">
-                    <h3 className="text-2xl font-bold text-white mb-1">{grade.title}</h3>
-                    <p className="text-sm text-gray-400 mb-3">{grade.subtitle}</p>
-                    <p className="text-gray-300 text-sm leading-relaxed">{grade.description}</p>
+                    <h3 className="text-2xl font-bold text-[#053361] mb-1">{grade.title}</h3>
+                    <p className="text-sm text-gray-600 mb-3">{grade.subtitle}</p>
+                    <p className="text-gray-700 text-sm leading-relaxed">{grade.description}</p>
                   </div>
 
                   <div className="flex justify-center space-x-6 mb-4">
                     <div className="flex items-center">
-                      <Users className="w-4 h-4 text-blue-400 mr-1" />
-                      <span className="text-xs text-gray-400">Interactive</span>
+                      <Users className="w-4 h-4 text-[#053361] mr-1" />
+                      <span className="text-xs text-gray-600">Interactive</span>
                     </div>
                     <div className="flex items-center">
-                      <Clock className="w-4 h-4 text-green-400 mr-1" />
-                      <span className="text-xs text-gray-400">Self-Paced</span>
+                      <Clock className="w-4 h-4 text-[#FFD000] mr-1" />
+                      <span className="text-xs text-gray-600">Self-Paced</span>
                     </div>
                   </div>
 
                   <div className={`overflow-hidden transition-all duration-500 ${isSelected ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
-                    <div className="pt-4 border-t border-gray-600">
+                    <div className="pt-4 border-t border-gray-300">
                       <div className="mb-4">
-                        <h4 className="text-white font-semibold mb-2 flex items-center">
+                        <h4 className="text-[#053361] font-semibold mb-2 flex items-center">
                           <BookOpen className="w-4 h-4 mr-2" />
                           Key Subjects
                         </h4>
                         <div className="flex flex-wrap gap-2">
                           {grade.subjects.map((subject, index) => (
-                            <span key={index} className="px-3 py-1 bg-slate-700/50 text-gray-300 text-xs rounded-full border border-slate-600">{subject}</span>
+                            <span key={index} className="px-3 py-1 bg-blue-50 text-[#053361] text-xs rounded-full border border-blue-200">{subject}</span>
                           ))}
                         </div>
                       </div>
 
                       <div className="mb-4">
-                        <h4 className="text-white font-semibold mb-2 flex items-center">
+                        <h4 className="text-[#053361] font-semibold mb-2 flex items-center">
                           <Star className="w-4 h-4 mr-2" />
                           Special Features
                         </h4>
                         <ul className="space-y-1">
                           {grade.features.map((feature, index) => (
-                            <li key={index} className="text-gray-300 text-xs flex items-center">
-                              <div className="w-1.5 h-1.5 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mr-2"></div>
+                            <li key={index} className="text-gray-700 text-xs flex items-center">
+                              <div className="w-1.5 h-1.5 bg-[#FFD000] rounded-full mr-2"></div>
                               {feature}
                             </li>
                           ))}
