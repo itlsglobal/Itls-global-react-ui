@@ -10,6 +10,24 @@ import Footer from "./Footer";
 import img from "../assets/generated-image5.png";
 
 export default function LandingPage() {
+  const carouselImages = [
+    "/src/assets/generated-image5.png",
+    "/src/assets/generated-image7.png",
+    "/src/assets/generated-image9.png"
+  ];
+
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    arrows: false,
+    adaptiveHeight: true
+  };
+
   return (
     <div className="landing-page w-full min-h-screen bg-white overflow-x-hidden">
       <div
@@ -19,21 +37,23 @@ export default function LandingPage() {
         {/* Navbar */}
         <Navbar />
 
-        {/* Hero Section */}
-        <section
-          id="home"
-          className="w-screen h-[60vh] relative overflow-hidden"
-        >
-          <img
-            src={img}
-            alt="Hero Banner"
-            className="w-full h-full object-cover"
-          />
+        {/* Hero Section - Carousel */}
+        <section id="home" className="w-screen h-[60vh] relative overflow-hidden">
+          <Slider {...sliderSettings}>
+            {carouselImages.map((image, index) => (
+              <div key={index} className="relative w-full h-[60vh]">
+                <img
+                  src={image}
+                  alt={`Hero Banner ${index + 1}`}
+                  className="w-full h-full object-cover"
+                />
+                {/* Dark overlay */}
+                <div className="absolute inset-0 bg-black/60"></div>
+              </div>
+            ))}
+          </Slider>
 
-          {/* Optional dark overlay */}
-          <div className="absolute inset-0 bg-black/60"></div>
-
-          {/* Optional centered content */}
+          {/* Centered content overlay */}
           <div className="absolute inset-0 flex items-center justify-center text-center px-6">
             <div>
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">

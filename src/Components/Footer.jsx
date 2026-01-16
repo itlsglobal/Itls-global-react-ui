@@ -126,7 +126,7 @@ export default function Footer() {
 
                 <div className="border-t border-gray-200 mt-12 pt-8 text-center">
                     <p className="text-gray-600">
-                        © 2025 ITLS GLOBAL. All rights reserved. Built with ❤️ using React.
+                       © 2025 ITLS GLOBAL. All rights reserved. Made with ❤️ for smarter learning.
                     </p>
                 </div>
             </div>
