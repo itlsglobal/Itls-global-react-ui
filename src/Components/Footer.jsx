@@ -9,7 +9,7 @@ export default function Footer() {
                 <div className="grid md:grid-cols-4 gap-8">
                     <div className="col-span-2">
                         <div className="flex items-center text-black font-bold space-x-2 mb-4">
-                          ITLS GLOBAL
+                            ITLS GLOBAL
                         </div>
                         <p className="text-gray-600 mb-4 max-w-md">
                             Empowering students with quality education from Grade 1 to
@@ -89,12 +89,12 @@ export default function Footer() {
                         <h3 className="text-gray-900 font-semibold mb-4">Company</h3>
                         <ul className="space-y-2">
                             <li>
-                                <a
-                                    href="#"
+                                <Link
+                                    to="/about"
                                     className="text-gray-600 hover:text-purple-600 transition-colors"
                                 >
                                     About
-                                </a>
+                                </Link>
                             </li>
                             <li>
                                 <a
@@ -113,12 +113,12 @@ export default function Footer() {
                                 </a>
                             </li>
                             <li>
-                                <a
-                                    href="#"
+                                <Link
+                                    to="/contact"
                                     className="text-gray-600 hover:text-purple-600 transition-colors"
                                 >
                                     Contact
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </div>

@@ -5,6 +5,8 @@ import Login from './Components/Login';
 import Registration from './Components/Registration';
 import TopicSelection from './Components/TopicSelection';
 import QuizPage from './Components/QuizPage';
+import AboutPage from './Components/AboutPage';
+import ContactPage from './Components/ContactPage';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -17,6 +19,8 @@ function App() {
         <Route path="/register" element={<Registration />} />
         <Route path="/topics" element={<TopicSelection />} />
         <Route path="/quiz" element={<QuizPage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
       </Routes>
     </Router>
   )
