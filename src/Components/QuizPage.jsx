@@ -13,6 +13,7 @@ export default function QuizPage() {
     const [quizSets, setQuizSets] = useState([]);
     const [selectedQuizId, setSelectedQuizId] = useState(null);
     const [questions, setQuestions] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [selectedAnswer, setSelectedAnswer] = useState(null); // Single value or array for checkboxes
     const [score, setScore] = useState(0);
@@ -35,10 +36,16 @@ export default function QuizPage() {
         if (passedQuizId) {
             setSelectedQuizId(passedQuizId);
             const sel = sets.find(q => q.id === passedQuizId);
-            if (sel) setQuestions(sel.questions || []);
+            if (sel) {
+                setQuestions(sel.questions || []);
+            }
+            setIsLoading(false);
         } else if (sets.length > 0) {
             setSelectedQuizId(sets[0].id);
             setQuestions(sets[0].questions || []);
+            setIsLoading(false);
+        } else {
+            setIsLoading(false);
         }
     }, [location]);
 
@@ -46,14 +53,14 @@ export default function QuizPage() {
     useEffect(() => {
         if (!selectedQuizId) return;
         const sel = quizSets.find(q => q.id === selectedQuizId);
-        if (sel) {
-            setQuestions(sel.questions || []);
-            setCurrentQuestionIndex(0);
-            setScore(0);
-            setSelectedAnswer(null);
-            setIsQuizFinished(false);
+        setQuestions(sel?.questions || []);
+        setCurrentQuestionIndex(0);
+        setScore(0);
+        setSelectedAnswer(null);
+        setIsQuizFinished(false);
+        setIsLoading(false);
             setFeedback({ show: false, isCorrect: false, message: "" });
-        }
+        
     }, [selectedQuizId, quizSets]);
 
     const currentQuestion = questions[currentQuestionIndex];
@@ -229,7 +236,46 @@ export default function QuizPage() {
         }
     };
 
-    if (questions.length === 0) return <div>Loading...</div>;
+    if (isLoading || questions.length === 0) {
+        if (isLoading) {
+            return (
+                <div className="min-h-screen flex flex-col bg-white">
+                    <Navbar />
+                    <div className="flex-1 flex items-center justify-center p-4 bg-gradient-to-br from-white via-gray-50 to-blue-50">
+                        <div className="text-center">
+                            <div className="inline-flex items-center justify-center w-16 h-16 bg-[#053361] rounded-full mb-6 animate-spin border-4 border-[#FFD000] border-t-[#053361]"></div>
+                            <h2 className="text-2xl font-bold text-[#053361]">Loading Quiz...</h2>
+                            <p className="text-gray-600 mt-2">Please wait while we prepare your questions</p>
+                        </div>
+                    </div>
+                    <Footer />
+                </div>
+            );
+        }
+        return (
+            <div className="min-h-screen flex flex-col bg-white">
+                <Navbar />
+                <div className="flex-1 flex items-center justify-center p-4 bg-gradient-to-br from-white via-gray-50 to-blue-50">
+                    <div className="text-center max-w-lg">
+                        <div className="text-8xl mb-6">🎯</div>
+                        <h2 className="text-4xl font-bold text-[#053361] mb-4">No Questions Available</h2>
+                        <p className="text-xl text-gray-600 mb-2">This topic doesn't have any questions yet.</p>
+                        <p className="text-gray-500 mb-8">But don't worry! More content is coming soon. Check back later for exciting quizzes and challenges.</p>
+                        <div className="space-x-4">
+                            <button
+                                onClick={() => navigate('/topics')}
+                                className="inline-flex items-center gap-2 bg-[#053361] text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-[#053361]/90 transition-all duration-300 transform hover:scale-105 shadow-lg"
+                            >
+                                <Home className="w-5 h-5" />
+                                Back to Topics
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <Footer />
+            </div>
+        );
+    }
 
     return (
         <div className="w-full min-h-screen bg-gradient-to-br from-purple-50 via-white to-pink-50 flex flex-col overflow-x-hidden">
@@ -365,7 +411,7 @@ export default function QuizPage() {
                         </h3>
                         <div className="flex gap-4 justify-center">
                             <button
-                                onClick={() => navigate('/')}
+                                onClick={() => navigate('/topics')}
                                 className="bg-[#FFD000] text-[#053361] px-6 py-2 rounded-lg font-bold hover:bg-yellow-400"
                             >
                                 Yes, Exit
