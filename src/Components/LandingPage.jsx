@@ -7,13 +7,15 @@ import "slick-carousel/slick/slick-theme.css";
 import GradeSelection from "./GradeSelection";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import img from "../assets/generated-image5.png";
+import img1 from "../assets/generated-image5.png";
+import img2 from "../assets/generated-image7.png";
+import img3 from "../assets/generated-image9.png";
 
 export default function LandingPage() {
   const carouselImages = [
-    "/src/assets/generated-image5.png",
-    "/src/assets/generated-image7.png",
-    "/src/assets/generated-image9.png"
+    img1,
+    img2,
+    img3
   ];
 
   const sliderSettings = {
@@ -23,7 +25,7 @@ export default function LandingPage() {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000,
+    autoplaySpeed: 5000,
     arrows: false,
     adaptiveHeight: true
   };
@@ -60,7 +62,7 @@ export default function LandingPage() {
                 Learn Smarter with ITLS GLOBAL
               </h1>
               <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
-                Structured learning paths from Grade 1 to Advanced Levels
+                Structured learning paths from Kindergarten to Advanced Levels
               </p>
               {/* <button className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-4 rounded-full font-semibold hover:scale-105 transition-transform">
                 Get Started
